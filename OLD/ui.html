@@ -1,0 +1,48 @@
+<h2>Modular Scale Styles Creator</h2>
+<div class="mss-sidebar">
+  <div class="mss-sidebar__block">
+    <h3>Font Settings</h3>
+    <div class="mss-sidebar__setting">
+      <label for="baseFontSize">
+        <span>Base Font Size</span>
+        <input id="baseFontSize" value="18">
+      </label>
+    </div>
+    <div class="mss-sidebar__setting">
+      <label for="baseFontSize">
+        <span>Scale Factor</span>
+        <select id="scaleFactor">
+          <option value="1.067">1.067 — Minor Second</option>
+          <option value="1.125">1.125 — Major Second</option>
+          <option value="1.200" selected>1.200 — Minor Third</option>
+          <option value="1.250">1.250 — Major Third</option>
+          <option value="1.333">1.333 — Perfect Fourth</option>
+          <option value="1.414">1.414 — Augmented Fourth</option>
+          <option value="1.500">1.500 — Perfect Fifth</option>
+          <option value="1.618">1.618 — Golden Ratio</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</div>
+
+
+
+
+<button id="create">Create</button>
+<button id="cancel">Cancel</button>
+<script>
+
+
+
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script>
